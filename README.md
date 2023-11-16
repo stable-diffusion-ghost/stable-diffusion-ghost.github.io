@@ -1,1 +1,1 @@
-# stable-diffusion-ghost.github.io
+# hons-ghost.github.io
