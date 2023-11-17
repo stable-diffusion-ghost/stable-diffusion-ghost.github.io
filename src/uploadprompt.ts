@@ -3,7 +3,7 @@ import { Session } from "./session.js";
 
 const UploadTxId = "";
 
-export class UploadHon {
+export class UploadPrompt {
     m_masterAddr: string;
     m_session: Session
     public constructor(private blockStore: BlockStore

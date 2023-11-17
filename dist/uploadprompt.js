@@ -1,5 +1,5 @@
 const UploadTxId = "";
-export class UploadHon {
+export class UploadPrompt {
     constructor(blockStore, session) {
         this.blockStore = blockStore;
         this.session = session;

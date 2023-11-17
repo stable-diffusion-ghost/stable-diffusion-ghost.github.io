@@ -1,5 +1,5 @@
 const NewHonTxId = "/J5jhRp4qZHSHl7fofgtaVdIIpN7sXlgIy9C2kle9fs=";
-export class NewHon {
+export class NewPrompt {
     constructor(blockStore, session) {
         this.blockStore = blockStore;
         this.session = session;

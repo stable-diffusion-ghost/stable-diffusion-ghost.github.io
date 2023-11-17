@@ -4,7 +4,7 @@ import { Session } from "./session.js";
 
 const NewHonTxId = "/J5jhRp4qZHSHl7fofgtaVdIIpN7sXlgIy9C2kle9fs=";
 
-export class NewHon {
+export class NewPrompt {
     m_masterAddr: string;
     m_session: Session
     public constructor(private blockStore: BlockStore

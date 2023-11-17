@@ -3,7 +3,7 @@ import { HonUser, Session } from "./session.js";
 
 const HonDetailTxId ="gWKlQ+lzus3I/m/K9qGm4VICaBr9byPTyL83E+ef4gA=";
 
-export class HonDetail {
+export class PromptDetail {
     m_masterAddr: string;
     m_session: Session
     public constructor(private blockStore: BlockStore

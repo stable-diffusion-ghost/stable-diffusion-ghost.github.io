@@ -1,4 +1,4 @@
-export class Hon {
+export class Prompt {
     constructor(blockStore, session) {
         this.blockStore = blockStore;
         this.session = session;

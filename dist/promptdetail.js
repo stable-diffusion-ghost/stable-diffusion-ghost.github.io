@@ -1,5 +1,5 @@
 const HonDetailTxId = "gWKlQ+lzus3I/m/K9qGm4VICaBr9byPTyL83E+ef4gA=";
-export class HonDetail {
+export class PromptDetail {
     constructor(blockStore, session) {
         this.blockStore = blockStore;
         this.session = session;

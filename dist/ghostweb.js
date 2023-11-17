@@ -1,12 +1,14 @@
 import { BlockStore } from "./store.js";
-import { HonDetail as PromptDetail } from "./promptdetail.js";
-import { Hons as Prompts } from "./prompts.js";
-import { Hon as Prompt } from "./prompt.js";
-import { NewHon as NewPrompt } from "./newprompt.js";
+import { Socket } from "./libs/socket.js";
+import { PromptDetail } from "./promptdetail.js";
+import { Prompts } from "./prompts.js";
+import { Prompt } from "./prompt.js";
+import { NewPrompt } from "./newprompt.js";
 import { Signup } from "./signup.js";
 import { Signin } from "./signin.js";
 import { Session } from "./session.js";
-import { UploadHon as UploadPrompt } from "./uploadprompt.js";
+import { UploadPrompt } from "./uploadprompt.js";
+import { Diffusion } from "./diffusion.js";
 const blockStore = new BlockStore();
 const session = new Session();
 const prompts = new Prompts(blockStore, session);
@@ -18,6 +20,7 @@ const funcMap = {
     "promptdetail": new PromptDetail(blockStore, session),
     "newprompt": new NewPrompt(blockStore, session),
     "uploadprompt": new UploadPrompt(blockStore, session),
+    "diffusion": new Diffusion(blockStore, new Socket),
 };
 const urlToFileMap = {
     "signin": "views/signin.html",
@@ -27,11 +30,12 @@ const urlToFileMap = {
     "promptdetail": "views/promptdetail.html",
     "newprompt": "views/newprompt.html",
     "uploadprompt": "views/uploadprompt.html",
+    "diffusion": "views/diffusion.html",
 };
 const getPageIdParam = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const pageid = urlParams.get("pageid");
-    const key = (pageid == null) ? "hons" : pageid;
+    const key = (pageid == null) ? "prompts" : pageid;
     if (beforPage == undefined)
         beforPage = key;
     return key;
