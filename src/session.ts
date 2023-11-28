@@ -14,25 +14,25 @@ export class Session {
     }
     public GetHonUser(): HonUser { return this.m_user; }
     public DrawHtmlSessionInfo() {
-        const seInfo = document.getElementById("sessioninfo");
-        if(seInfo == null) return;
+        const seInfo = document.getElementById("sessioninfo") as HTMLUListElement;
         if (this.m_signinFlag) {
             seInfo.innerHTML = `
-                <a href="javascript:void(0)" onclick="ClickLoadPage('hondetail', true, "&email=${this.m_user.Email}")">
-                    ${this.m_user.Nickname}
-                </a> / 
-            <a href="javascript:void(0)" onclick="ClickLoadPage('logout', true)">
-                Logout
-            </a> 
+                <li class="nav-item ">
+                <a href="javascript:void(0)" onclick="ClickLoadPage('hondetail', true, "&email=${this.m_user.Email}")"> ${this.m_user.Nickname} &nbsp; </a>  
+                </li>
+                <li class="nav-item ">
+                <a href="javascript:void(0)" onclick="ClickLoadPage('logout', true)"> Logout </a> 
+                </li>
             `;
 
         } else {
             seInfo.innerHTML = `
-            <a href="javascript:void(0)" onclick="ClickLoadPage('signin', true)">Sign In
-            </a> / <a
-                href="javascript:void(0)" onclick="ClickLoadPage('signup', true)">Sign Up</a>
-
-
+                <li class="nav-item ">
+                <a href="javascript:void(0)" onclick="ClickLoadPage('signin', true)">Sign In &nbsp;</a> 
+                </li>
+                <li class="nav-item ">
+                <a href="javascript:void(0)" onclick="ClickLoadPage('signup', true)">Sign Up</a>
+                </li>
             `;
         }
     }

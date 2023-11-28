@@ -1,5 +1,5 @@
 import { SHA256 } from "./libs/sha256.js";
-const SignupTxId = "QwUA466vP2SRYLKfvmUghqj4t4a1yVULPIF56e/c48s=";
+const SignupTxId = "fKRXGuZOPOFHawY/ZgW2p5KzWU75/n4VA5fpwOyT0q8=";
 export class Signup {
     constructor(blockStore, session) {
         this.blockStore = blockStore;
@@ -49,7 +49,7 @@ export class Signup {
         this.m_masterAddr = masterAddr;
         const txLink = document.getElementById("txLink");
         txLink.innerHTML = `
-            <a class="handcursor" onclick='ClickLoadPage("txdetail", false, "&txid=${encodeURIComponent(SignupTxId)}")'>
+            <a class="handcursor" href="http://ghostwebservice.com/?pageid=txdetail&txid=${encodeURIComponent(SignupTxId)}">
                 ${SignupTxId}
             </a> `;
         const btn = document.getElementById("signupBtn");

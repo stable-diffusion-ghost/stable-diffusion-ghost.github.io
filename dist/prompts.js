@@ -1,6 +1,6 @@
 import { elapsedTime } from "./utils.js";
-const HonsTxId = "dcRfHIj75kpsGhu/fZq/8LrnQDIF4qIJbJJz3YM4XiA=";
-const HonTxId = "gWKlQ+lzus3I/m/K9qGm4VICaBr9byPTyL83E+ef4gA=";
+const HonsTxId = "Rx8HL0EM0cwQ+N2X/Ap914V1M5YRBq9QqhAXwu5UirA=";
+const HonTxId = "hFzzKC6clglO878ATBE8JnfKhjUr5grmVkYigmGmVtw=";
 export class Prompts {
     constructor(blockStore, session) {
         this.blockStore = blockStore;
@@ -17,6 +17,7 @@ export class Prompts {
         info.innerHTML = msg;
     }
     honsResult(ret) {
+        console.log(ret);
         if ("json" in ret) {
             const keys = JSON.parse(ret.json);
             return keys;
@@ -27,6 +28,7 @@ export class Prompts {
         return [];
     }
     drawHtmlHon(ret) {
+        const uniqId = ret.Id + ret.Time.toString();
         const feeds = document.getElementById("feeds");
         if (feeds == null)
             return;
@@ -40,26 +42,48 @@ export class Prompts {
                     <small> ${elapsedTime(Number(ret.Time))}</small>
                 </div>
                 <div class="card-body">
-                    ${ret.Content}
+                    <div class="row m-3 text-center" id="${uniqId}"></div>
+                    <div class="row m-3">Prompt: ${ret.prompt}</div>
+                    <div class="row m-3">NPrompt: ${ret.nprompt}</div>
                 </div>
             </div>
         `;
+        fetch("data:image/jpg;base64," + ret.file)
+            .then(res => res.blob())
+            .then(img => {
+            const imageUrl = URL.createObjectURL(img);
+            const imageElement = new Image();
+            imageElement.src = imageUrl;
+            imageElement.setAttribute('class', 'img-fluid');
+            imageElement.setAttribute('class', 'rounded');
+            const container = document.getElementById(uniqId);
+            container.appendChild(imageElement);
+        });
     }
     RequestHon(keys, callback) {
         const addr = this.m_masterAddr + "/glambda?txid=" +
-            encodeURIComponent(HonTxId) + "&Table=feeds&key=";
+            encodeURIComponent(HonTxId) + "&Table=diffu&key=";
         keys.forEach((key) => {
             fetch(addr + atob(key))
                 .then((response) => response.json())
                 .then((result) => callback(result));
         });
     }
+    drawHtmlConnectMaster() {
+        const bodyTag = document.getElementById('connect');
+        if (bodyTag == null)
+            return;
+        console.log(window.MasterNode);
+        bodyTag.innerHTML = `<b>Connected Master</b> - 
+        ${window.MasterNode.User.Nickname}, <b>Online Nodes </b>
+        ${window.NodeCount}`;
+    }
     RequestHons(n, callback) {
         this.m_masterAddr = window.MasterAddr;
         const masterAddr = this.m_masterAddr;
         const user = this.m_session.GetHonUser();
         const addr = `
-        ${masterAddr}/glambda?txid=${encodeURIComponent(HonsTxId)}&Table=feeds&Start=0&Count=${n}`;
+        ${masterAddr}/glambda?txid=${encodeURIComponent(HonsTxId)}&Table=diffu&Start=0&Count=${n}`;
         fetch(addr)
             .then((response) => response.json())
             .then((result) => this.honsResult(result))
@@ -71,6 +95,7 @@ export class Prompts {
     }
     Run(masterAddr) {
         this.m_masterAddr = masterAddr;
+        this.drawHtmlConnectMaster();
         this.RequestHons(5, this.drawHtmlHon);
         return true;
     }

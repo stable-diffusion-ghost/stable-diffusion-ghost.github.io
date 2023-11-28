@@ -10,6 +10,19 @@
                 <div class="card-header font-weight-bold">Stable Diffusion</div>
                 <div class="card-body p-2">
                     <div class="row mb-3">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                UNetModel
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2" id="modellist">
+                                <button class="dropdown-item" type="button">UNetModel</button>
+                                <button class="dropdown-item" type="button">SD-v1.4</button>
+                                <button class="dropdown-item" type="button">chilled-remix</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Prompt</span>
@@ -27,22 +40,23 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                        <label for="height" class="form-label">Height</label>
-                        <input type="range" id="height" class="form-range" step="0" min="256" max="512">
+                            <label for="height" class="form-label" id="heightvalue">Height</label>
+                            <input type="range" id="height" class="form-range" step="64" min="256" max="512">
                         </div>
                         <div class="col">
-                        <label for="width" class="form-label">Width</label>
-                        <input type="range" id="width" class="form-range" step="0" min="256" max="512">
+                            <label for="width" class="form-label" id="widthvalue">Width</label>
+                            <input type="range" id="width" class="form-range" step="64" min="256" max="512">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                        <label for="step" class="form-label">Step</label>
-                        <input type="range" id="step" class="form-range" step="0.5" min="2" max="20">
+                            <label for="step" class="form-label" id="stepvalue">Step</label>
+                            <input type="range" id="step" class="form-range" step="2" min="2" max="20">
                         </div>
                         <div class="col">
-                        <label for="seed" class="form-label">Seed</label>
-                        <input type="text" placeholder="2023" id="seed" class="form-control" aria-describedby="basic-addon3"></textarea>
+                            <label for="seed" class="form-label">Seed</label>
+                            <input type="text" placeholder="2023" id="seed" class="form-control"
+                                aria-describedby="basic-addon3"></textarea>
                         </div>
                     </div>
                 </div>
@@ -53,6 +67,10 @@
         <div class="col m-2">
             <button class="btn btn-outline-primary" type="button" id="generateBtn">
                 Generate Image</button>
+        </div>
+        <div class="col m-2">
+            <button class="btn btn-outline-primary" type="button" id="uploadBtn">
+                Upload</button>
         </div>
     </div>
     <div class="row">

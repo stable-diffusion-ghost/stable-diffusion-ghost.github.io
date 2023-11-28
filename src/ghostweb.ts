@@ -38,16 +38,18 @@ const funcMap: FuncMap = {
     "signup": new Signup(blockStore, session),
     "prompt": new Prompt(blockStore, session),
     "prompts": prompts,
+    "main": prompts,
     "promptdetail": new PromptDetail(blockStore,session),
     "newprompt": new NewPrompt(blockStore, session),
     "uploadprompt": new UploadPrompt(blockStore, session),
-    "diffusion": new Diffusion(blockStore, new Socket),
+    "diffusion": new Diffusion(blockStore, session, new Socket),
 };
 
 const urlToFileMap: UrlMap = {
     "signin": "views/signin.html",
     "signup": "views/signup.html",
     "prompts": "views/prompts.html",
+    "main": "views/prompts.html",
     "prompt": "views/prompt.html",
     "promptdetail": "views/promptdetail.html",
     "newprompt": "views/newprompt.html",
