@@ -8,6 +8,7 @@ export type HonEntry = {
     prompt: string,
     nprompt: string,
     file: string,
+    step: number,
     Time: number,
 }
 
@@ -56,8 +57,10 @@ export class Prompts {
                 </div>
                 <div class="card-body">
                     <div class="row m-3 text-center" id="${uniqId}"></div>
-                    <div class="row m-3">Prompt: ${ret.prompt}</div>
-                    <div class="row m-3">NPrompt: ${ret.nprompt}</div>
+                    <div class="row m-3">Prompt: ${ret.prompt} <br>
+                        NPrompt: ${ret.nprompt}<br>
+                        Step: ${ret.step || "?"}
+                    </div>
                 </div>
             </div>
         `;

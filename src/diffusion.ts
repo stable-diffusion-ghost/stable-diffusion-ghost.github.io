@@ -44,12 +44,15 @@ export class Diffusion {
         const prompt = promptTag.value.toLowerCase();
         const npromptTag = document.getElementById("nprompt") as HTMLInputElement;
         const nprompt = npromptTag.value.toLowerCase();
+        const stepTag = document.getElementById("step") as HTMLInputElement;
+        const step = stepTag.value;
         const user = this.m_session.GetHonUser();
 
         const formData = new FormData()
         formData.append("file", this.m_img)
         formData.append("prompt", prompt)
         formData.append("nprompt", nprompt)
+        formData.append("step", step)
         formData.append("key", user.Email)
         formData.append("Email", user.Email)
         formData.append("Password", user.Password)
