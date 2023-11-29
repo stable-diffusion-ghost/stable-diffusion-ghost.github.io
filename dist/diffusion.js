@@ -13,10 +13,7 @@ export class Diffusion {
         this.m_models.set("SD-v1.4", "sd-v1-4-ggml-model-f16.bin");
         this.m_models.set("chiled-remix", "chilled_remix_v2-ggml-model-f16.bin");
         ipc.RegisterMsgHandler('generateLog', (log) => {
-            const printTag = document.getElementById("log");
-            printTag.innerHTML = `
-                ${log}
-            `;
+            this.printLog(log);
         });
         ipc.RegisterMsgHandler('reply_generateImage', (filename) => {
             fetch(`${window.MasterAddr}/image?filename=${filename}`)
@@ -33,7 +30,17 @@ export class Diffusion {
             });
         });
     }
+    printLog(msg) {
+        const printTag = document.getElementById("log");
+        printTag.innerHTML = `
+                ${msg}
+            `;
+    }
     uploadImage() {
+        if (!this.m_session.CheckLogin()) {
+            this.printLog("need to sign in");
+            return;
+        }
         const promptTag = document.getElementById("prompt");
         const prompt = promptTag.value.toLowerCase();
         const npromptTag = document.getElementById("nprompt");
@@ -74,18 +81,19 @@ export class Diffusion {
         const stepTag = document.getElementById("step");
         const step = stepTag.value;
         const seedTag = document.getElementById("seed");
-        const seed = seedTag.value;
+        const seed = (seedTag.value == "") ? "-1" : seedTag.value;
         const printTag = document.getElementById("printImg");
         printTag.innerHTML = `
             <div class="spinner-grow text-primary" role="status">
                 <span class="visually-hidden"></span>
             </div>
         `;
+        const prevent19 = (nprompt == "") ? "nude, naked, nsfw" : ", nude, naked, nsfw";
         if (this.m_model == "UNetModel") {
-            this.m_ipc.SendMsg("generateImage", prompt, nprompt, height, width, step, seed);
+            this.m_ipc.SendMsg("generateImage", prompt, nprompt + prevent19, height, width, step, seed);
         }
         else {
-            this.m_ipc.SendMsg("generateImage2", prompt, nprompt, height, width, step, seed, this.m_model);
+            this.m_ipc.SendMsg("generateImage2", prompt, nprompt + prevent19, height, width, step, seed, this.m_model);
         }
     }
     heightUpdate(heightTag) {
@@ -136,6 +144,9 @@ export class Diffusion {
         btn.onclick = () => this.generateImage();
         const uploadBtn = document.getElementById("uploadBtn");
         uploadBtn.onclick = () => this.uploadImage();
+        if (!this.m_session.CheckLogin()) {
+            this.printLog("sign in을 해야 upload가 가능합니다.");
+        }
         this.updateEvent();
         this.drawHtmlUpdateModelList();
         return true;

@@ -60,7 +60,7 @@ export class Prompts {
                     <div class="row m-3 text-center" id="${uniqId}"></div>
                     <div class="row m-3">Prompt: ${ret.prompt} <br>
                         NPrompt: ${ret.nprompt}<br>
-                        Step: ${ret.step || "?"}
+                        Step: ${ret.step || "?"}<br>
                         Model: ${ret.model || "?"}
                     </div>
                 </div>
@@ -102,8 +102,7 @@ export class Prompts {
         if (bodyTag == null) return;
         console.log(window.MasterNode);
         bodyTag.innerHTML = `<b>Connected Master</b> - 
-        ${window.MasterNode.User.Nickname}, <b>Online Nodes </b>
-        ${window.NodeCount}`;
+        ${window.MasterNode.User.Nickname}`;
     }
 
     public RequestHons(n: number, callback: (h: HonEntry) => void) {
