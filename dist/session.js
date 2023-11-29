@@ -16,16 +16,6 @@ export class Session {
                 </li>
             `;
         }
-        else {
-            seInfo.innerHTML = `
-                <li class="nav-item ">
-                <a href="javascript:void(0)" onclick="ClickLoadPage('signin', true)">Sign In &nbsp;</a> 
-                </li>
-                <li class="nav-item ">
-                <a href="javascript:void(0)" onclick="ClickLoadPage('signup', true)">Sign Up</a>
-                </li>
-            `;
-        }
     }
     SignIn(user) {
         this.m_user = user;
