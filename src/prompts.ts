@@ -72,8 +72,7 @@ export class Prompts {
                 const imageUrl = URL.createObjectURL(img)
                 const imageElement = new Image()
                 imageElement.src = imageUrl
-                imageElement.setAttribute('class', 'img-fluid');
-                imageElement.setAttribute('class', 'rounded');
+                imageElement.className = 'img-fluid rounded';
                 const container = document.getElementById(uniqId) as HTMLDivElement;
                 container.appendChild(imageElement)
             })

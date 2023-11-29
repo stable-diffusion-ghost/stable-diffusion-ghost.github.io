@@ -1,4 +1,6 @@
 import { includeContentHTML, includeHTML, parseResponse, loadNodesHtml } from "./ghostweb.js";
+includeHTML("header", "navbar.html");
+includeHTML("footer", "foot.html");
 const tag = document.getElementById("contents");
 if (tag != null) {
     if (location.protocol != 'http:') {
@@ -34,6 +36,4 @@ function errmsg(title, content) {
 </div>
         `;
 }
-includeHTML("header", "navbar.html");
-includeHTML("footer", "foot.html");
 //# sourceMappingURL=uiutils.js.map
