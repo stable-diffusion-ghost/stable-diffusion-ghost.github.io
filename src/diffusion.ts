@@ -83,6 +83,8 @@ export class Diffusion {
             cache: "no-cache",
             headers: {},
             body: formData
+        }).then(() => {
+            window.ClickLoadPage('prompts', false)
         })
     }
     generateImage() {
