@@ -46,6 +46,7 @@ export class Prompts {
                     <div class="row m-3">Prompt: ${ret.prompt} <br>
                         NPrompt: ${ret.nprompt}<br>
                         Step: ${ret.step || "?"}
+                        Model: ${ret.model || "?"}
                     </div>
                 </div>
             </div>

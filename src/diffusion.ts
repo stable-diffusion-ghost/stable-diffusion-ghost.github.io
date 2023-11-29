@@ -10,12 +10,19 @@ export class Diffusion {
     m_model: string;
     m_img: Blob;
     m_session: Session
+    m_models: Map<string, string>
     public constructor(private blockStore: BlockStore, private session: Session, ipc: Channel) {
         this.m_blockStore = blockStore;
         this.m_ipc = ipc;
         this.m_model = "UNetModel";
         this.m_img = new Blob()
         this.m_session = session;
+
+        this.m_models = new Map()
+        this.m_models.set("UNetModel", "UNetModel")
+        this.m_models.set("SD-v1.4", "sd-v1-4-ggml-model-f16.bin")
+        this.m_models.set("chiled-remix", "chilled_remix_v2-ggml-model-f16.bin")
+
 
         ipc.RegisterMsgHandler('generateLog', (log: string) => {
             const printTag = document.getElementById("log") as HTMLDivElement;
@@ -53,6 +60,7 @@ export class Diffusion {
         formData.append("prompt", prompt)
         formData.append("nprompt", nprompt)
         formData.append("step", step)
+        formData.append("model", this.m_model)
         formData.append("key", user.Email)
         formData.append("Email", user.Email)
         formData.append("Password", user.Password)
@@ -128,16 +136,11 @@ export class Diffusion {
         btn.innerText = key
     }
 
-    drawHtmlUpdateModelList() {
-        const models = new Map()
-        models.set("UNetModel", "UNetModel")
-        models.set("SD-v1.4", "sd-v1-4-ggml-model-f16.bin")
-        models.set("chiled-remix", "chilled_remix_v2-ggml-model-f16.bin")
-
+    drawHtmlUpdateModelList() {        
         const tag = document.getElementById("modellist")
         if (tag == null) return;
         tag.innerHTML = "";
-        models.forEach((model, key, map) => {
+        this.m_models.forEach((model, key, map) => {
             const button = document.createElement('button');
             button.setAttribute('class', 'dropdown-item');
             button.onclick = () => this.selectModel(key, model)

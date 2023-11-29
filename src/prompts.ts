@@ -9,6 +9,7 @@ export type HonEntry = {
     nprompt: string,
     file: string,
     step: number,
+    model: string,
     Time: number,
 }
 
@@ -60,6 +61,7 @@ export class Prompts {
                     <div class="row m-3">Prompt: ${ret.prompt} <br>
                         NPrompt: ${ret.nprompt}<br>
                         Step: ${ret.step || "?"}
+                        Model: ${ret.model || "?"}
                     </div>
                 </div>
             </div>
