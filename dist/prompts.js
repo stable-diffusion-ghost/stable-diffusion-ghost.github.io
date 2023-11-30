@@ -43,10 +43,17 @@ export class Prompts {
                 </div>
                 <div class="card-body">
                     <div class="row m-3 text-center" id="${uniqId}"></div>
-                    <div class="row m-3">Prompt: ${ret.prompt} <br>
-                        NPrompt: ${ret.nprompt}<br>
-                        Step: ${ret.step || "?"}<br>
-                        Model: ${ret.model || "?"}
+                    <div class="row m-3">
+                        <dl class="row">
+                            <dt class="col-sm-2">Prompt</dt>
+                            <dd class="col-sm-10"> ${ret.prompt} </dd>
+                            <dt class="col-sm-2">NPrompt</dt>
+                            <dd class="col-sm-10"> ${ret.nprompt}</dd>
+                            <dt class="col-sm-2">Step</dt>
+                            <dd class="col-sm-10">${ret.step || "?"}</dd>
+                            <dt class="col-sm-2">Model</dt> 
+                            <dd class="col-sm-10">${ret.model || "?"}</dd>
+                        </dl>
                     </div>
                 </div>
             </div>

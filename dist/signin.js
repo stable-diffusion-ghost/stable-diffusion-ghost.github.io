@@ -55,7 +55,7 @@ export class Signin {
         this.m_masterAddr = masterAddr;
         const txLink = document.getElementById("txLink");
         txLink.innerHTML = `
-            <a class="handcursor" href="http://ghostwebservice.com/?pageid=txdetail&txid=${encodeURIComponent(SigninTxId)}">
+            <a target="_blank" class="handcursor" href="http://ghostwebservice.com/?pageid=txdetail&txid=${encodeURIComponent(SigninTxId)}">
                 ${SigninTxId}
             </a> `;
         const btn = document.getElementById("signinBtn");
