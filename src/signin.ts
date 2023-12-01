@@ -1,8 +1,8 @@
 import { BlockStore } from "./store.js";
 import { Session, HonUser } from "./session.js";
 import { SHA256 } from "./libs/sha256.js";
+import { SigninTxId } from "./models/tx.js";
 
-const SigninTxId = "uzSqomRNXjA/yPZe8NhJSsDQYAhiUMzJbwTgwkskJ5w=";
 
 export class Signin {
     m_masterAddr: string;

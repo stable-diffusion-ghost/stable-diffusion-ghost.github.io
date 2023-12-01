@@ -1,4 +1,4 @@
-const NewHonTxId = "/J5jhRp4qZHSHl7fofgtaVdIIpN7sXlgIy9C2kle9fs=";
+import { NewHonTxId } from "./models/tx.js";
 export class NewPrompt {
     constructor(blockStore, session) {
         this.blockStore = blockStore;

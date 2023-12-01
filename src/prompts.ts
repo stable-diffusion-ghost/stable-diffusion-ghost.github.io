@@ -1,6 +1,7 @@
 import { BlockStore } from "./store.js";
 import { elapsedTime} from "./utils.js";
 import { Session } from "./session.js";
+import { HonTxId, HonsTxId } from "./models/tx.js";
 
 export type HonEntry = {
     Email: string,
@@ -13,8 +14,6 @@ export type HonEntry = {
     Time: number,
 }
 
-const HonsTxId = "Rx8HL0EM0cwQ+N2X/Ap914V1M5YRBq9QqhAXwu5UirA=";
-const HonTxId = "hFzzKC6clglO878ATBE8JnfKhjUr5grmVkYigmGmVtw=";
 
 export class Prompts {
     m_masterAddr: string;

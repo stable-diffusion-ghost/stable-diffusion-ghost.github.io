@@ -2,8 +2,8 @@ import { BlockStore } from "./store.js";
 import { Session } from "./session.js";
 import { FetchResult } from "./models/param.js";
 import { SHA256 } from "./libs/sha256.js";
+import { SignupTxId } from "./models/tx.js";
 
-const SignupTxId = "fKRXGuZOPOFHawY/ZgW2p5KzWU75/n4VA5fpwOyT0q8=";
 
 export class Signup {
     m_masterAddr: string;

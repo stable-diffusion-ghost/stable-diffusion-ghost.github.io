@@ -1,5 +1,5 @@
 import { SHA256 } from "./libs/sha256.js";
-const SigninTxId = "uzSqomRNXjA/yPZe8NhJSsDQYAhiUMzJbwTgwkskJ5w=";
+import { SigninTxId } from "./models/tx.js";
 export class Signin {
     constructor(blockStore, session) {
         this.blockStore = blockStore;

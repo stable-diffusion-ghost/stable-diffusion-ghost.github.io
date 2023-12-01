@@ -1,4 +1,4 @@
-const HonDetailTxId = "gWKlQ+lzus3I/m/K9qGm4VICaBr9byPTyL83E+ef4gA=";
+import { HonDetailTxId } from "./models/tx.js";
 export class PromptDetail {
     constructor(blockStore, session) {
         this.blockStore = blockStore;

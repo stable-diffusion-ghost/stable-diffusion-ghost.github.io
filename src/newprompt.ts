@@ -1,8 +1,8 @@
 import { BlockStore } from "./store.js";
 import { FetchResult } from "./models/param.js";
 import { Session } from "./session.js";
+import { NewHonTxId } from "./models/tx.js";
 
-const NewHonTxId = "/J5jhRp4qZHSHl7fofgtaVdIIpN7sXlgIy9C2kle9fs=";
 
 export class NewPrompt {
     m_masterAddr: string;

@@ -1,7 +1,7 @@
 import { BlockStore } from "./store.js";
 import { HonUser, Session } from "./session.js";
+import { HonDetailTxId } from "./models/tx.js";
 
-const HonDetailTxId ="gWKlQ+lzus3I/m/K9qGm4VICaBr9byPTyL83E+ef4gA=";
 
 export class PromptDetail {
     m_masterAddr: string;

@@ -1,8 +1,8 @@
 import { BlockStore } from "./store.js";
 import { Channel } from "./models/com.js";
 import { Session } from "./session.js";
+import { NewPromptTxId } from "./models/tx.js";
 
-const NewPromptTxId = "U9GynNvxotN2V+J1r8YbCl9VJTLhDu+OzLlFqDazI68="
 
 export class Diffusion {
     m_blockStore: BlockStore;

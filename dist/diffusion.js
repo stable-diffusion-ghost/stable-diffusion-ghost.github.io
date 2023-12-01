@@ -1,4 +1,4 @@
-const NewPromptTxId = "U9GynNvxotN2V+J1r8YbCl9VJTLhDu+OzLlFqDazI68=";
+import { NewPromptTxId } from "./models/tx.js";
 export class Diffusion {
     constructor(blockStore, session, ipc) {
         this.blockStore = blockStore;

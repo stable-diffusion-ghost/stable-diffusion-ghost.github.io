@@ -1,6 +1,5 @@
 import { elapsedTime } from "./utils.js";
-const HonsTxId = "Rx8HL0EM0cwQ+N2X/Ap914V1M5YRBq9QqhAXwu5UirA=";
-const HonTxId = "hFzzKC6clglO878ATBE8JnfKhjUr5grmVkYigmGmVtw=";
+import { HonTxId, HonsTxId } from "./models/tx.js";
 export class Prompts {
     constructor(blockStore, session) {
         this.blockStore = blockStore;
