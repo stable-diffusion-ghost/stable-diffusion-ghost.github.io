@@ -1,6 +1,6 @@
 import { SigninTxId } from "./models/tx.js";
 const emptyUser = { Email: "", Nickname: "", Password: "" };
-const jsSessionKey = "HonUser";
+const jsSessionKey = "DiffusionUser";
 export class Session {
     constructor() {
         this.m_user = { Email: "", Nickname: "", Password: "" };
@@ -47,8 +47,8 @@ export class Session {
         if (str != null && this.m_signinFlag == false) {
             const user = JSON.parse(str);
             this.RequestSignIn(user.Email, user.Password, (ret) => {
-                if ("email" in ret) {
-                    this.SignIn({ Email: ret.email, Nickname: ret.id, Password: ret.password });
+                if ("Email" in ret) {
+                    this.SignIn({ Email: ret.Email, Nickname: ret.Id, Password: ret.Password });
                     this.drawHtmlLoginUi();
                 }
             });

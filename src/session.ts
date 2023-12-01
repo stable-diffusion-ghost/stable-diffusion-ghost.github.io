@@ -7,7 +7,7 @@ export type HonUser = {
 }
 
 const emptyUser: HonUser = { Email: "", Nickname: "", Password: "" }
-const jsSessionKey = "HonUser"
+const jsSessionKey = "DiffusionUser"
 
 export class Session {
     m_user: HonUser;
@@ -59,8 +59,8 @@ export class Session {
         if (str != null && this.m_signinFlag == false) {
             const user: HonUser = JSON.parse(str)
             this.RequestSignIn(user.Email, user.Password, (ret: any) => {
-                if ("email" in ret) {
-                    this.SignIn({ Email: ret.email, Nickname: ret.id, Password: ret.password });
+                if ("Email" in ret) {
+                    this.SignIn({ Email: ret.Email, Nickname: ret.Id, Password: ret.Password });
                     this.drawHtmlLoginUi()
                 }
             })
