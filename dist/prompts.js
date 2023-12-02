@@ -32,6 +32,7 @@ export class Prompts {
         if (feeds == null)
             return;
         feeds.innerHTML += `
+        <div class="col">
         <br>
             <div class="card">
                 <div class="card-header"> 
@@ -44,18 +45,19 @@ export class Prompts {
                     <div class="row m-3 text-center" id="${uniqId}"></div>
                     <div class="row m-3">
                         <dl class="row">
-                            <dt class="col-sm-2">Prompt</dt>
-                            <dd class="col-sm-10"> ${ret.prompt} </dd>
-                            <dt class="col-sm-2">NPrompt</dt>
-                            <dd class="col-sm-10"> ${ret.nprompt}</dd>
-                            <dt class="col-sm-2">Step</dt>
-                            <dd class="col-sm-10">${ret.step || "?"}</dd>
-                            <dt class="col-sm-2">Model</dt> 
-                            <dd class="col-sm-10">${ret.model || "?"}</dd>
+                            <dt class="col-sm-3">Prompt</dt>
+                            <dd class="col-sm-9"> ${ret.prompt} </dd>
+                            <dt class="col-sm-3">NPrompt</dt>
+                            <dd class="col-sm-9"> ${ret.nprompt}</dd>
+                            <dt class="col-sm-3">Step</dt>
+                            <dd class="col-sm-9">${ret.step || "?"}</dd>
+                            <dt class="col-sm-3">Model</dt> 
+                            <dd class="col-sm-9">${ret.model || "?"}</dd>
                         </dl>
                     </div>
                 </div>
             </div>
+        </div>
         `;
         fetch("data:image/jpg;base64," + ret.file)
             .then(res => res.blob())
