@@ -10,8 +10,8 @@ export class Diffusion {
         this.m_session = session;
         this.m_models = new Map();
         this.m_models.set("UNetModel", "UNetModel");
-        this.m_models.set("SD-v1.4", "sd-v1-4-ggml-model-f16.bin");
-        this.m_models.set("chiled-remix", "chilled_remix_v2-ggml-model-f16.bin");
+        this.m_models.set("SD-v1.4", "sd-v1-4-f16.gguf");
+        this.m_models.set("chiled-remix", "chilled_reversemix_v2-f16.gguf");
         ipc.RegisterMsgHandler('generateLog', (log) => {
             this.printLog(log);
         });
