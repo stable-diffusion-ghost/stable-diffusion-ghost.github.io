@@ -72,10 +72,9 @@ export class Diffusion {
         formData.append("model", this.m_model)
         formData.append("key", user.Email)
         formData.append("Email", user.Email)
-        formData.append("Password", user.Password)
         formData.append("password", user.Password)
-        formData.append("Id", user.Nickname)
-        formData.append("Time", (new Date()).getTime().toString())
+        formData.append("id", user.Nickname)
+        formData.append("time", (new Date()).getTime().toString())
         formData.forEach(entry => console.log(entry))
         const addr = window.MasterAddr + "/glambda?txid=" + encodeURIComponent(NewPromptTxId);
         fetch(addr, {

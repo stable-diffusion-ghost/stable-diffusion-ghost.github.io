@@ -4,14 +4,14 @@ import { Session } from "./session.js";
 import { HonTxId, HonsTxId } from "./models/tx.js";
 
 export type HonEntry = {
-    Email: string,
-    Id: string,
+    email: string,
+    id: string,
     prompt: string,
     nprompt: string,
     file: string,
     step: number,
     model: string,
-    Time: number,
+    time: number,
 }
 
 
@@ -43,7 +43,7 @@ export class Prompts {
         return []
     }
     drawHtmlHon(ret: HonEntry) {
-        const uniqId = ret.Id + ret.Time.toString()
+        const uniqId = ret.id + ret.time.toString()
         const feeds = document.getElementById("feeds");
         if (feeds == null) return;
         feeds.innerHTML += `
@@ -51,10 +51,10 @@ export class Prompts {
         <br>
             <div class="card">
                 <div class="card-header"> 
-                    <a href="javascript:void(0)" onclick="ClickLoadPage('hondetail', false, '&email=${ret.Email}')">
-                    <strong class="me-auto">${ret.Id}</strong>
+                    <a href="javascript:void(0)" onclick="ClickLoadPage('hondetail', false, '&email=${ret.email}')">
+                    <strong class="me-auto">${ret.id}</strong>
                     </a>
-                    <small> ${elapsedTime(Number(ret.Time))}</small>
+                    <small> ${elapsedTime(Number(ret.time))}</small>
                 </div>
                 <div class="card-body">
                     <div class="row m-3 text-center" id="${uniqId}"></div>
