@@ -1,7 +1,7 @@
 import { BlockStore } from "./store.js";
 import { FetchResult } from "./models/param.js";
 import { Session } from "./session.js";
-import { NewHonTxId } from "./models/tx.js";
+import { NewPromptTxId } from "./models/tx.js";
 
 
 export class NewPrompt {
@@ -29,7 +29,7 @@ export class NewPrompt {
         const masterAddr = this.m_masterAddr;
         const user = this.m_session.GetHonUser();
         const inputContent = document.getElementById("inputContent") as HTMLTextAreaElement;
-        const addr = masterAddr + "/glambda?txid=" + encodeURIComponent(NewHonTxId);
+        const addr = masterAddr + "/glambda?txid=" + encodeURIComponent(NewPromptTxId);
         fetch(addr, {
             method: "POST",
             headers: {
@@ -52,8 +52,8 @@ export class NewPrompt {
         this.m_masterAddr = masterAddr;
         const txLink = document.getElementById("txLink") as HTMLElement;
         txLink.innerHTML = `
-            <a class="handcursor" onclick='ClickLoadPage("txdetail", false, "&txid=${encodeURIComponent(NewHonTxId)}")'>
-                ${NewHonTxId}
+            <a class="handcursor" onclick='ClickLoadPage("txdetail", false, "&txid=${encodeURIComponent(NewPromptTxId)}")'>
+                ${NewPromptTxId}
             </a> `;
         const cont = document.getElementById("inputContent") as HTMLTextAreaElement;
         cont.onfocus = ()=>{ if (cont.value == "Enter text") cont.value = ''; };

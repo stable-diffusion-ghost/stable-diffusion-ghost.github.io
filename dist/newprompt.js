@@ -1,4 +1,4 @@
-import { NewHonTxId } from "./models/tx.js";
+import { NewPromptTxId } from "./models/tx.js";
 export class NewPrompt {
     constructor(blockStore, session) {
         this.blockStore = blockStore;
@@ -25,7 +25,7 @@ export class NewPrompt {
         const masterAddr = this.m_masterAddr;
         const user = this.m_session.GetHonUser();
         const inputContent = document.getElementById("inputContent");
-        const addr = masterAddr + "/glambda?txid=" + encodeURIComponent(NewHonTxId);
+        const addr = masterAddr + "/glambda?txid=" + encodeURIComponent(NewPromptTxId);
         fetch(addr, {
             method: "POST",
             headers: {
@@ -48,8 +48,8 @@ export class NewPrompt {
         this.m_masterAddr = masterAddr;
         const txLink = document.getElementById("txLink");
         txLink.innerHTML = `
-            <a class="handcursor" onclick='ClickLoadPage("txdetail", false, "&txid=${encodeURIComponent(NewHonTxId)}")'>
-                ${NewHonTxId}
+            <a class="handcursor" onclick='ClickLoadPage("txdetail", false, "&txid=${encodeURIComponent(NewPromptTxId)}")'>
+                ${NewPromptTxId}
             </a> `;
         const cont = document.getElementById("inputContent");
         cont.onfocus = () => { if (cont.value == "Enter text")
