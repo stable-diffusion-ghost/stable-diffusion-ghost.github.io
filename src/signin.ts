@@ -23,8 +23,8 @@ export class Signin {
     }
     loginResult(ret: any) {
         console.log(ret);
-        if ("Email" in ret) {
-            this.m_session.SignIn({ Email: ret.Email, Nickname: ret.Id, Password: ret.Password });
+        if ("email" in ret) {
+            this.m_session.SignIn({ Email: ret.email, Nickname: ret.id, Password: ret.password });
             window.ClickLoadPage("main", false);
         } else {
             this.warningMsg("ID와 Password가 맞지 않습니다.")
@@ -43,8 +43,7 @@ export class Signin {
 
         const formData = new FormData()
         formData.append("key", email)
-        formData.append("Email", email)
-        formData.append("Password", password)
+        formData.append("email", email)
         formData.append("password", password)
         console.log(JSON.stringify({ key: email, Email: email, password: password }))
         fetch(addr, {

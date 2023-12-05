@@ -38,12 +38,17 @@ export class Signup {
         const inputId = document.getElementById("inputId") as HTMLInputElement
         const id = inputId?.value;
         const addr = masterAddr + "/glambda?txid=" + encodeURIComponent(SignupTxId);
+
+        const formData = new FormData()
+        formData.append("key", email)
+        formData.append("email", email)
+        formData.append("password", password)
+        formData.append("id", id)
         fetch(addr, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ key: email, Email: email, Password: password, Id: id })
+            cache: "no-cache",
+            headers: {},
+            body: formData
         })
             .then((response) => response.json())
             .then((result) => this.signupResult(result))

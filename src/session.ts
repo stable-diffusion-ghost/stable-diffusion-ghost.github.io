@@ -58,9 +58,10 @@ export class Session {
         const str = sessionStorage.getItem(jsSessionKey)
         if (str != null && this.m_signinFlag == false) {
             const user: HonUser = JSON.parse(str)
+                console.log(user)
             this.RequestSignIn(user.Email, user.Password, (ret: any) => {
-                if ("Email" in ret) {
-                    this.SignIn({ Email: ret.Email, Nickname: ret.Id, Password: ret.Password });
+                if ("email" in ret) {
+                    this.SignIn({ Email: ret.email, Nickname: ret.id, Password: ret.password });
                     this.drawHtmlLoginUi()
                 }
             })

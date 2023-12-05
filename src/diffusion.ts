@@ -71,7 +71,7 @@ export class Diffusion {
         formData.append("step", step)
         formData.append("model", this.m_model)
         formData.append("key", user.Email)
-        formData.append("Email", user.Email)
+        formData.append("email", user.Email)
         formData.append("password", user.Password)
         formData.append("id", user.Nickname)
         formData.append("time", (new Date()).getTime().toString())

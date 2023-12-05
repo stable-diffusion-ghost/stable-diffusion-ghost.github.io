@@ -87,7 +87,7 @@ export class Prompts {
     }
     public RequestHon(keys: string[], callback: (h: HonEntry) => void) {
         const addr = this.m_masterAddr + "/glambda?txid=" + 
-            encodeURIComponent(HonTxId) + "&Table=diffu&key=";
+            encodeURIComponent(HonTxId) + "&table=feeds&key=";
         keys.forEach((key) => {
             fetch(addr + atob(key),/*{
                 
@@ -117,7 +117,7 @@ export class Prompts {
         const masterAddr = this.m_masterAddr;
         const user = this.m_session.GetHonUser();
         const addr = `
-        ${masterAddr}/glambda?txid=${encodeURIComponent(HonsTxId)}&Table=diffu&Start=0&Count=${n}`;
+        ${masterAddr}/glambda?txid=${encodeURIComponent(HonsTxId)}&table=feeds&start=0&count=${n}`;
         fetch(addr)
             .then((response) => response.json())
             .then((result) => this.honsResult(result))
