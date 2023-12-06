@@ -105,7 +105,7 @@ export class Prompts {
     Run(masterAddr) {
         this.m_masterAddr = masterAddr;
         this.drawHtmlConnectMaster();
-        this.RequestHons(5, this.drawHtmlHon);
+        this.RequestHons(8, this.drawHtmlHon);
         return true;
     }
     Release() {

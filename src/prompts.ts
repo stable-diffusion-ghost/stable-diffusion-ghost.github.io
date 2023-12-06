@@ -130,7 +130,7 @@ export class Prompts {
     public Run(masterAddr: string): boolean {
         this.m_masterAddr = masterAddr;
         this.drawHtmlConnectMaster()
-        this.RequestHons(5, this.drawHtmlHon);
+        this.RequestHons(8, this.drawHtmlHon);
         return true;
     }
 
