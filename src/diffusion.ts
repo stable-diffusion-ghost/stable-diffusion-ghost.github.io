@@ -106,6 +106,7 @@ export class Diffusion {
             </div>
         `;
         const prevent19 = (nprompt == "") ? "nude, naked, nsfw":", nude, naked, nsfw"
+        console.log(this.m_model)
 
 
         if (this.m_model == "UNetModel") {
