@@ -112,7 +112,8 @@ export class Diffusion {
         if (this.m_model == "UNetModel") {
             this.m_ipc.SendMsg("generateImage", prompt, nprompt + prevent19, height, width, step, seed);
         } else {
-            this.m_ipc.SendMsg("generateImage2", prompt, nprompt + prevent19, height, width, step, seed, this.m_model);
+            this.m_ipc.SendMsg("generateImage2", prompt, nprompt + prevent19, height, width, step, seed,
+                this.m_model, "euler", "7");
         }
     }
 
