@@ -112,8 +112,16 @@ export class Diffusion {
         if (this.m_model == "UNetModel") {
             this.m_ipc.SendMsg("generateImage", prompt, nprompt + prevent19, height, width, step, seed);
         } else {
+            const samplingMethod = "euler"
+            const cfgScale = "7"
+            const strength = ""
+            const batchCnt = ""
+            const schedule = ""
+            const clipSkip = "2"
+            const vea = ""
+            const lora = ""
             this.m_ipc.SendMsg("generateImage2", prompt, nprompt + prevent19, height, width, step, seed,
-                this.m_model, "euler", "7");
+                this.m_model, samplingMethod, cfgScale, strength, batchCnt, schedule, clipSkip, vea, lora);
         }
     }
 
